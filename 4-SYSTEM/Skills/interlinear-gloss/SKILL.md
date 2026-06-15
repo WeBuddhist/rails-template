@@ -151,6 +151,16 @@ The recommended path is the scaffold helper followed by an LLM pass for the `\gl
 
 ---
 
+## Re-running this skill
+
+The scaffold script can be re-run safely:
+
+- Existing `\glb` lines are preserved if their token count still matches `\gla` after the source text is re-read.
+- If the source text was re-formatted (e.g. a verse was retokenised), the affected `\glb` lines are reset to `--` placeholders and the change is flagged in stderr so you can review.
+- `\gla` and `\ex` are always refreshed from the underlying source files.
+
+---
+
 ## How downstream skills consume this file
 
 - `glossary-extract-raw` walks every `gloss` block in this file, pairs `\gla` tokens against `\glb` cells, and records every distinct `(source-token, target-gloss)` rendering.

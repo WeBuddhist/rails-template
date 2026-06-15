@@ -36,6 +36,22 @@ Normalises an existing commentary file: OCR cleanup, heading structure, paragrap
 Inserts or regenerates a table of contents in a source or rails file.
 → [`add-toc/SKILL.md`](add-toc/SKILL.md)
 
+### `root-text-frontmatter` **[exists]**
+Generates complete YAML frontmatter for a root-text file in `1-SOURCES/Text/` by extracting metadata from its title, colophon, and opening content.
+→ [`root-text-frontmatter/SKILL.md`](root-text-frontmatter/SKILL.md)
+
+### `commentary-frontmatter` **[exists]**
+Generates complete YAML frontmatter for a commentary file in `1-SOURCES/Commentaries/`, including the `registered_id`, `root_text`, and `covers_verses` fields.
+→ [`commentary-frontmatter/SKILL.md`](commentary-frontmatter/SKILL.md)
+
+### `translation-frontmatter` **[exists]**
+Generates complete YAML frontmatter for a translation file in `1-SOURCES/Translations/`, including translator, target language, and `translation_basis`.
+→ [`translation-frontmatter/SKILL.md`](translation-frontmatter/SKILL.md)
+
+### `reference-frontmatter` **[exists]**
+Generates complete YAML frontmatter for a secondary-literature or reference file in `1-SOURCES/References/`.
+→ [`reference-frontmatter/SKILL.md`](reference-frontmatter/SKILL.md)
+
 ---
 
 ## Rails-building skills (context preparation for translation)

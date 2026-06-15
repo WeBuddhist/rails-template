@@ -7,6 +7,9 @@
 .obsidian/plugins/obsidian-git/data.json
 .obsidian/plugins/gemini-scribe/data.json
 
+# Gemini-scribe workspace (local only — sessions and credentials)
+gemini-scribe/
+
 # System junk
 .trash/
 .DS_Store

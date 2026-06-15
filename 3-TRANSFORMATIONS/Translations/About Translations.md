@@ -7,6 +7,7 @@ Translations/
 └── <lang>-<track-name>/
     ├── requirements.md # the style contract (in the target language)
     ├── termbase.md     # the vocabulary contract (one chosen rendering per keyword)
+    ├── audience.md     # the audience profile
     ├── <output>.md     # the translation file(s), one per source-text section
     └── qa-report.md   # MQM-taxonomy critique driving the next revision
 ```

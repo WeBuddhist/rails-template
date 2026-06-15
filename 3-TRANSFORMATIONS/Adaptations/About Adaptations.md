@@ -8,6 +8,7 @@ Each subfolder is one **adaptation track** — one (audience × shape × purpose
 Adaptations/
 └── <track-id>/
     ├── requirements.md # audience, shape, scope, what to keep, what to dissolve
+    ├── audience.md     # the audience profile
     ├── termbase.md     # (optional) locked renderings
     └── <output>.md    # the generated adaptation files
 ```

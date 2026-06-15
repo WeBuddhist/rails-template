@@ -113,19 +113,25 @@ Generated outputs — translations, adaptations, lesson plans, study guides, dai
 │   └── [track-id]/
 │       ├── requirements.md   # the style contract
 │       ├── termbase.md       # the vocabulary contract
+│       ├── audience.md       # the audience profile
 │       ├── <output>.md       # the generated translation files
 │       └── qa-report.md      # MQM-taxonomy critique driving the next revision
 ├── Adaptations/              # audience-targeted retellings
 │   └── [track-id]/
 │       ├── requirements.md
+│       ├── audience.md
 │       ├── termbase.md
 │       └── <output>.md
 └── Plans/                    # calendar-driven study/practice arcs
     └── [plan-id]/
-        ├── requirements.md
-        ├── termbase.md
-        ├── schedule/, plans/, days/, communications/, assets/
-        └── …
+        ├── About <plan-name>.md   # cross-language overview
+        └── [lang]/                # one subfolder per published language
+            ├── requirements.md
+            ├── termbase.md
+            ├── schedule.md
+            ├── days/
+            ├── communications/
+            └── assets/
 ```
 
 Each output file's frontmatter records which `2-RAILS/` packages it was generated from, enforcing the citation chain through to the final artefact. Transformations are generated only from packages whose `status` is `complete`. Draft or partial packages are not used.

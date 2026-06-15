@@ -118,6 +118,73 @@ Use full paths in all `1-SOURCES/` and `2-RAILS/` files. Short wiki links are ac
 
 ---
 
+## 5a. Heading hierarchy for source text files
+
+Headings are **editorial structure added to the original text** — they are not themselves original content. To mark this distinction and prevent any collision with verse/block IDs, every heading block ID ends with **`-0`** (the zero slot is reserved for the heading; original content always starts at `1`).
+
+| Level | Markdown | Purpose | Block ID format | Example |
+|---|---|---|---|---|
+| 1 | `#` | Title of the work | none | `# [Title of the work]` |
+| 2 | `##` | Chapter | `^N-0` | `## 1. [Chapter title] ^1-0` |
+| 3 | `###` | Section (from author's own TOC) | `^N-N-0` | `### 1.2 [Section title] ^1-2-0` |
+| 4 | `####` | Sub-section | `^N-N-N-0` | `#### 1.2.3 [Sub-section title] ^1-2-3-0` |
+
+Content blocks beneath a heading use the same numeric path but replace the trailing `0` with the sequential block number starting at `1`:
+
+```
+## 0. Introduction ^0-0
+
+[pre-chapter / homage / colophon block] ^0-1
+
+## 1. [Chapter 1 title] ^1-0
+
+[first verse or prose block of chapter 1] ^1-1
+
+### 1.2 [Section title] ^1-2-0
+
+First prose block here. ^1-2-1
+Second prose block here. ^1-2-2
+```
+
+Rules:
+- The `#` title line takes **no** block ID.
+- `##` headings use `^N-0`. Chapter `0` is always the pre-chapter introduction (`## 0. Introduction ^0-0`).
+- `###` headings use `^N-N-0`, where the first segment is the parent chapter and the second is the section's ordinal within that chapter.
+- `####` headings use `^N-N-N-0`.
+- The `0` in the final position is **reserved** for the heading; original-text blocks always start at `1`.
+- IDs must not exceed four segments (three path segments + the `0`); flatten deeper structures.
+- No zero-padding on any segment.
+
+---
+
+## 5b. Inline TOC phrases — wikilink tagging
+
+Buddhist texts frequently contain **inline structural announcements**: sentences where the author enumerates the upcoming sections before elaborating each one. These phrases are original content (not editorial additions), but they are also the textual source of the TOC headings. Tagging them makes the connection explicit and enables backlink navigation across the vault.
+
+**Convention:** wrap each announced term in a wikilink pointing to the block ID of the heading it sources.
+
+```markdown
+## [Chapter title] ^1-0
+This chapter has two parts: [[#^1-1-0|the brief teaching]] and [[#^1-2-0|the extended explanation]].
+
+### [Brief teaching] ^1-1-0
+[[#^1-1-0|The brief teaching]] is as follows: …
+
+### [Extended explanation] ^1-2-0
+[[#^1-2-0|The extended explanation]] runs as follows: …
+```
+
+Rules:
+- In the **enumeration sentence**, each announced term links forward to its corresponding section heading: `[[#^N-N-0|term]]`.
+- In the **body of each section**, the repetition of the section title links to its own heading: `[[#^N-N-0|term]]`. This is self-referential by design — it tags the phrase as the textual source of that heading.
+- For cross-file links (e.g. a commentary tagging terms from the root text structure): `[[filename#^N-N-0|term]]`.
+- Use the minimal display text — just the structural term itself, not the full grammatical phrase.
+- These wikilinks are the only inline tagging mechanism. Do not use italics, HTML spans, or Dataview fields for this purpose.
+
+**Why self-referential links are correct:** clicking a self-link inside its own section scrolls you to the heading of that section — a minor navigation no-op. The value is in the backlinks panel: every file that tags a phrase with `#^1-1-0` becomes visible on that heading, revealing where the structure was announced across all commentaries and translations in the vault.
+
+---
+
 ## 6. `1-SOURCES/` — what you may and may not do
 
 Files here are received material — formatted for navigation, never interpreted. Permitted additions only:
